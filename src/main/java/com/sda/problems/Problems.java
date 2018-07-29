@@ -82,4 +82,67 @@ import java.util.stream.IntStream;
 
         return primeNumbersList;
     }
-}
+
+     public static List<String> rotate(List<String> strings, int i) {
+         List<String> rotateStrings = new ArrayList<>();
+         if(i>0) {
+                for (int j = i; j < strings.size(); j++) {
+                rotateStrings.add(strings.get(j)); }
+
+                for (int j = 0; j < i; j++) {
+                 rotateStrings.add(strings.get(j));
+                }
+                }else{
+             for (int j = 0; j < -i; j++) {
+                 rotateStrings.add(strings.get(strings.size()+j+i));
+             }
+             for (int j = 0; j < strings.size()+i; j++) {
+                 rotateStrings.add(strings.get(j)); }
+
+         }
+                return rotateStrings;
+     }
+
+     public static Object[] removeAt(List<String> strings, int i) {
+        Object [] removeAtTable = new Object[2];
+        List<String> stringsWithoutI = new ArrayList<>();
+
+         for (int j = 0; j < strings.size(); j++) {
+             if (j!=i-1) {
+                 stringsWithoutI.add(strings.get(j));
+             }
+         }
+        removeAtTable[0]=stringsWithoutI;
+        removeAtTable[1]=strings.get(i-1);
+
+        return removeAtTable;
+     }
+
+     public static List<String> insertAt(List<String> input, int i, String alfa) {
+         List<String> insertAtList = new ArrayList<>();
+         for (int j = 0; j < input.size()+1; j++) {
+             if (j < i - 1) {
+                 insertAtList.add(input.get(j));
+             }
+             if (j == i - 1) {
+                 insertAtList.add(alfa);
+             }
+             if (j > i - 1) {
+                 insertAtList.add(input.get(j - 1));
+             }
+         }
+     return insertAtList;
+     }
+
+     public static List<String> randomPermutation(List<String> collect) {
+         List<String> randomStrings = new ArrayList<>();
+         Random random = new Random();
+         int startlenght = collect.size();
+         for (int j = 0; j < startlenght; j++) {
+             int z = random.nextInt(collect.size());
+             randomStrings.add(collect.get(z));
+             collect.remove(z);
+         }
+         return randomStrings;
+     }
+ }
